@@ -1,0 +1,42 @@
+@import 'bulma/css/bulma.css';
+
+// FONTS
+
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer:ital@1&display=swap');
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.navbar {
+	position: relative;
+	height: 55px;
+}
+
+.logo {
+	font-family: 'IM Fell Great Primer', serif;
+	font-weight: 700;
+	font-size: 40px;
+	position: absolute;
+	color: #333;
+	top: 10%;
+	left: 45%;
+	cursor: pointer;
+}
+
+.notification a:not(.button):not(.dropdown-item) {
+	text-decoration: none !important;
+}
