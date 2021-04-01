@@ -9,7 +9,9 @@ const list = ({ blogs, getAllBlogs }) => {
 		getAllBlogs();
 	}, []);
 
-	return (
+	return blogs === undefined ? (
+		<h2>Looding...</h2>
+	) : (
 		<div className="columns is-mobile is-multiline is-centered">
 			{blogs.length !== 0 ? (
 				blogs.map((blog) => (

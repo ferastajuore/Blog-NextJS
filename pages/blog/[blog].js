@@ -11,7 +11,7 @@ export const blogID = () => {
 		<h2>Looding...</h2>
 	) : (
 		<div className="container">
-			<Article blogID={blog} />
+			<Article blogSlug={blog} />
 		</div>
 	);
 };

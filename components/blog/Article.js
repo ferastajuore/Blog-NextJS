@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { getBlog } from '../../actions/blogs';
 import BlogIMG from '../../assets/img/blogIMG.jpg';
 
-export const Article = ({ getBlog, blogID, article }) => {
+export const Article = ({ getBlog, blogSlug, article }) => {
 	useEffect(() => {
-		getBlog(blogID);
+		getBlog(blogSlug);
 	}, []);
 
 	return (

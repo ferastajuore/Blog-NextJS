@@ -24,7 +24,7 @@ const item = ({ blog }) => {
 					</time>
 				</div>
 				<div className="buttons">
-					<Link href={`/blog/${blog.id}`} as={`/blog/${blog._id}`}>
+					<Link href={`/blog/${blog.slug}`} as={`/blog/${blog.slug}`}>
 						<button className="button is-info">Read more -{'>'}</button>
 					</Link>
 				</div>
