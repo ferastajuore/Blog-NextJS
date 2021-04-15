@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { getBlog } from '../../actions/blogs';
+import { getArticle } from '../../actions/article';
 import BlogIMG from '../../assets/img/blogIMG.jpg';
 
-export const Article = ({ getBlog, blogSlug, article }) => {
+export const Article = ({ getArticle, articleSlug, article }) => {
 	useEffect(() => {
-		getBlog(blogSlug);
+		getArticle(articleSlug);
 	}, []);
 
 	return (
@@ -36,11 +36,11 @@ export const Article = ({ getBlog, blogSlug, article }) => {
 };
 
 const mapStateToProps = (state) => ({
-	article: state.blogs.article,
+	article: state.articles.article,
 });
 
 const mapDispatchToProps = {
-	getBlog,
+	getArticle,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article);

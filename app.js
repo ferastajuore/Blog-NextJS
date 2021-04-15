@@ -6,8 +6,7 @@ const articleRoute = require('./backend/routers/articleRoute');
 
 const app = express();
 
-const dev = process.env.NODE_ENV !== 'production';
-
+const dev = process.env.NODE_ENV === 'development';
 const nx = next({ dev });
 const handle = nx.getRequestHandler();
 nx.prepare();
@@ -17,7 +16,11 @@ if (dev) {
 	app.use(morgan('dev')); // Extract logs
 }
 
-app.use('/api/v1/blogs', articleRoute);
+// Body parser
+app.use(express.json());
+
+// Routers
+app.use('/api/v1/articles', articleRoute);
 
 app.get('*', (req, res) => {
 	return handle(req, res);

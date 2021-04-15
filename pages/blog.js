@@ -1,10 +1,10 @@
 import React from 'react';
-import ListBlogs from '../components/blog/List';
+import ListArticle from '../components/articles/List';
 
 const blog = () => {
 	return (
 		<div className="container">
-			<ListBlogs />
+			<ListArticle />
 		</div>
 	);
 };

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import BlogIMG from '../../assets/img/blogIMG.jpg';
 
-const item = ({ blog }) => {
+const item = ({ article }) => {
 	return (
 		<div className="card">
 			<div className="card-image is-3by2">
@@ -10,13 +10,13 @@ const item = ({ blog }) => {
 			<div className="card-content">
 				<div className="media">
 					<div className="media-content">
-						<p className="title is-4">{blog.title}</p>
-						<p className="subtitle is-6">{blog.writer}</p>
+						<p className="title is-4">{article.title}</p>
+						<p className="subtitle is-6">{article.writer}</p>
 					</div>
 				</div>
 
 				<div className="content">
-					{blog.description.split('.', 2)[0]}
+					{article.description.split('.', 2)[0]}
 					<br />
 					<br />
 					<time className="subtitle is-6" dateTime="2016-1-1">
@@ -24,7 +24,7 @@ const item = ({ blog }) => {
 					</time>
 				</div>
 				<div className="buttons">
-					<Link href={`/blog/${blog.slug}`} as={`/blog/${blog.slug}`}>
+					<Link href={`/article/${article.slug}`} as={`/article/${article.slug}`}>
 						<button className="button is-info">Read more -{'>'}</button>
 					</Link>
 				</div>
