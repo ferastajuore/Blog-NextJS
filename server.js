@@ -1,18 +1,15 @@
-const express = require('express');
-const next = require('next');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const articleRoute = require('./backend/routers/articleRoute');
 
 dotenv.config({ path: './config.env' });
+const app = require('./app.js');
 
-const dev = process.env.NODE_ENV !== 'production';
-const port = process.env.PORT;
-const app = next({ dev });
+process.on('uncaughtException', (err) => {
+	console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
+	console.log(err.name, err.message);
+	process.exit(1);
+});
 
-const handle = app.getRequestHandler();
-
-// Connact To the MONGOOSE Local
 const DB = process.env.DATABASE_LOCAL;
 mongoose
 	.connect(DB, {
@@ -23,26 +20,17 @@ mongoose
 	})
 	.then(() => console.log('DB connaction successful'));
 
-app.prepare()
-	.then(() => {
-		const server = express();
+const port = process.env.PORT;
 
-		server.get('/api/v1/blogs123', (req, res) => {
-			res.status(200).json({ text: 'test' });
-		});
+app.listen(port, (err) => {
+	if (err) throw err;
+	console.log(`> Ready on http://localhost:${port}`);
+});
 
-		server.use('/api/v1/blogs', articleRoute);
-
-		server.get('*', (req, res) => {
-			return handle(req, res);
-		});
-
-		server.listen(port, (err) => {
-			if (err) throw err;
-			console.log(`> Ready on http://localhost:${port}`);
-		});
-	})
-	.catch((ex) => {
-		console.error(ex.stack);
+process.on('unhandledRejection', (err) => {
+	console.log('UNHANDLED REJECTION! 💥 Shutting down...');
+	console.log(err.name, err, message);
+	server.close(() => {
 		process.exit(1);
 	});
+});
